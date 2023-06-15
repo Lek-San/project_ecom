@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+    <h1>Inscription</h1>
+
+    <div class="d-flex justify-content-center">
+
+
+        {{ form_errors(registrationForm) }}
+
+        {{ form_start(registrationForm) }}
+
+            <fieldset class="mb-4">
+
+                <legend>Mon identité</legend>
+                {{ form_row(registrationForm.lastname) }}
+                {{ form_row(registrationForm.firstname) }}
+                {{ form_row(registrationForm.email) }}
+
+            </fieldset>
+
+            <fieldset class="mb-4">
+
+                <legend>Mes coordonnées</legend>
+                {{ form_row(registrationForm.address) }}
+                {{ form_row(registrationForm.zipcode) }}
+                {{ form_row(registrationForm.city) }}
+
+            </fieldset>
+
+            <fieldset class="mb-4">
+
+                <legend>Votre mot de passe</legend>
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Mot de passe'
+                }) }}
+                {{ form_row(registrationForm.RGPDConsent) }}
+
+            </fieldset>
+
+            <button type="submit" class="btn btn-outline-primary mb-4">Enregistrer</button>
+        {{ form_end(registrationForm) }}
+
+    </div>
+{% endblock %}
