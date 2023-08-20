@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity\Trait;
+
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -14,7 +15,7 @@ trait SlugTrait
         return $this->slug;
     }
 
-    public function setSlug(string $slug): static
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
