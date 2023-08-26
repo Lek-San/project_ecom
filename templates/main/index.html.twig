@@ -3,7 +3,39 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+    <main class="container">
 
-    <h1>Salut Les Terriens</h1>
+        <section class="row">
+
+            <div class="col-12 text-center">
+                <h1>E-COM</h1>
+                <p>Bienvenue dans notre boutique</p>
+            </div>
+
+            {% for category in categories %}
+                {% if category.parent == null %}
+                    <div class="col-12">
+                        <h3>{{ category.name }}</h3>
+                    </div>
+                {% else %}
+                    <div class="col-4 mb-3">
+                        <div class="card h-100 mb-3">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ category.name }}</h4>
+                                <a href="{{ path('app_category_list', {slug: category.slug}) }}" class="btn btn-outline-primary">Voir les produits</a>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        </section>
+
+
+
+    </main>
+
+
 
 {% endblock %}
