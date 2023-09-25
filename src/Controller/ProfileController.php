@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/profil', name: 'app_profile_')]
 class ProfileController extends AbstractController
 {
-    #[Route('/', name: 'app_index')]
+    #[Route('/', name: 'index')]
     public function index(): Response
     {
         return $this->render('profile/list.html.twig', [
@@ -17,7 +17,7 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/commandes', name: 'app_orders')]
+    #[Route('/commandes', name: 'orders')]
     public function orders(): Response
     {
         return $this->render('profile/list.html.twig', [
