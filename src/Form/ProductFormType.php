@@ -22,6 +22,9 @@ class ProductFormType extends AbstractType
             ->add('name', options: [
                 'label' => 'Nom'
             ])
+            ->add('reference', options: [
+                'label' => 'Référence'
+            ])
             ->add('description', options: [
                 'label' => 'Description'
             ])

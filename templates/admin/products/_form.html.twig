@@ -1,5 +1,6 @@
 {{ form_start(productForm) }}
     {{ form_row(productForm.name) }}
+    {{ form_row(productForm.reference) }}
     {{ form_row(productForm.description) }}
     {{ form_row(productForm.categories) }}
     {{ form_row(productForm.price) }}
@@ -7,11 +8,13 @@
 
     {# Afficher les images si on est en edition d'un produit #}
     {% if app.request.attributes.get('_route') == 'app_admin_products_edit' %}
-        <h4>Images</h4>
+        <h5>Images</h5>
         {% for image in product.images %}
-            <div>
-                <img src="{{ asset('assets/img/products/mini/300x300-' ~ image.name)}}" alt="Image" width="150">
-                <a href="{{ path('app_admin_products_delete_picture', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+            <div class="card align-items-center" style="width: 100px">
+                <img src="{{ asset('assets/img/products/mini/300x300-' ~ image.name)}}" style="width: 100px; height: 100px" alt="Image" width="150">
+                <div class="card-body">
+                    <a href="{{ path('app_admin_products_delete_picture', {id: image.id}) }}" class="nav-link text-danger" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                </div>
             </div>
         {% endfor %}
     {% endif %}

@@ -1,9 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administration des Utilisateurs{% endblock %}
+{% block title %}La liste des utilisateur{% endblock %}
 
 {% block body %}
 
-    <h1>Administration des Utilisateurs</h1>
+    <div class="container">
+        <div class="row">
+            {% include '_partials/_amin_navbar.html.twig' %}
+            <main class="col-9 border border-white bg-light p-2">
+                <h1 class="text-center">La liste des utilisateur</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Vérifié</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <th scope="row">{{ user.id }}</th>
+                                <td>{{ user.firstname }}</td>
+                                <td>{{ user.lastname }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    {% for role in user.roles %}
+                                        {% if role =="ROLE_ADMIN" %}
+                                            {% set name = "Administrateur" %}
+                                            {% set color = "danger" %}
+                                        {% elseif role == "ROLE_PRODUCT_ADMIN" %}
+                                            {% set name = "Administrateur de produit" %}
+                                            {% set color = "warning" %}
+                                        {% else %}
+                                            {% set name = "Membre" %}
+                                            {% set color = "info" %}
+                                        {% endif %}
+                                        <span class="badge bg-{{ color }}">{{ name }}</span>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="switch{{ user.id }}" {{ user.isVerified ? "checked : "" "}} disabled>
+                                        <label class="form-check-label" for="switch{{ user.id }}"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="{# {{ path('app_admin_products_edit', {id: product.id}) }} #}" class="btn btn-outline-warning">Modifier</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
 
 {% endblock %}

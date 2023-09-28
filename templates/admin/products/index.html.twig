@@ -1,9 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administration des Produits{% endblock %}
+{% block title %}La liste des produits{% endblock %}
 
 {% block body %}
 
-    <h1>Administration des Produits</h1>
+    <div class="container">
+        <div class="row">
+            {% include '_partials/_amin_navbar.html.twig' %}
+            <main class="col-9 border border-white bg-light p-2">
+                <h1 class="text-center">La liste des produits</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Référence</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Catégorie</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <th scope="row">{{ product.id }}</th>
+                            <td>{{ product.reference }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.price / 100 }}</td>
+                            <td>{{ product.stock }}</td>
+                            <td>{{ product.categories.name }}</td>
+                            <td>
+                                <a href="{{ path('app_admin_products_edit', {id: product.id}) }}" class="btn btn-outline-warning">Modifier</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
 
 {% endblock %}

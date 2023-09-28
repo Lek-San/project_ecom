@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La liste des catégories{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            {% include '_partials/_amin_navbar.html.twig' %}
+            <main class="col-9 border border-white bg-light p-2">
+                <h1 class="text-center">La liste des catégories</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Parent</th>
+                            <th scope="col">Slug</th>
+                            <th scope="col">Ordre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <th scope="row">{{ category.id }}</th>
+                                <td>{{ category.name }}</td>
+                                <td>
+                                    {% if category.parent is not null %}
+                                        {{ category.parent.name }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ category.slug }}</td>
+                                <td>{{ category.categoryOrder }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -32,6 +32,16 @@ class Product
     )]
     private ?string $name = null;
 
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "La référence du produit de peut pas être vide.")]
+    #[Assert\Length(
+        min: 5,
+        max: 100,
+        minMessage: "La référence du produit ne doit pas contenir moins de {{ limit }} caractères",
+        maxMessage: "La référence du produit ne doit pas contenir plus de {{ limit }} caractères"
+    )]
+    private ?string $reference = null;
+
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
@@ -73,6 +83,24 @@ class Product
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    /**
+     * @param string|null $reference
+     */
+    public function setReference(?string $reference): self
+    {
+        $this->reference = $reference;
 
         return $this;
     }

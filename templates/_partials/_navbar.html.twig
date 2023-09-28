@@ -13,9 +13,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_main') }}">Tous les Produit</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
+                {% if app.user %}
+                    {% if is_granted("ROLE_PRODUCT_ADMIN") %}
+                        <li>
+                            <a class="nav-link" href="{{ path('app_admin_index') }}">Administration</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+                </ul>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
@@ -23,11 +28,12 @@
                         Mon Compte
                     </a>
                     {% if app.user %}
+                        
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ path('app_profile_index') }}">Mes coordonées</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a></li>
-                        </ul>
+
                     {% else %}
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ path('app_login') }}">Se Connecter</a></li>

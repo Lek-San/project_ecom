@@ -1,0 +1,28 @@
+<aside class="col-3 border border-white bg-light p-2">
+    <article class="card mb-3">
+        <div class="card-header">
+            <h6 class="text-center">Les Catégories</h6>
+        </div>
+        <div class="card-body text-center">
+            <p><a href="{{ path('app_admin_categories_index') }}" class="nav-link">Liste des catégories</a></p>
+            <p><a href="#" class="nav-link">Ajouter une catégorie</a></p>
+        </div>
+    </article>
+    <article class="card mb-3">
+        <div class="card-header">
+            <h6 class="text-center">Les Produits</h6>
+        </div>
+        <div class="card-body text-center">
+            <p><a href="{{ path('app_admin_products_index') }}" class="nav-link">Liste des produits</a></p>
+            <p><a href="{{ path('app_admin_products_add') }}" class="nav-link">Ajouter un produit</a></p>
+        </div>
+    </article>
+    <article class="card mb-3 text-center">
+        <div class="card-header">
+            <h6 class="text-center">Les Commerciaux</h6>
+        </div>
+        <div class="card-body text-center">
+            <p><a href="{{ path('app_admin_users_index') }}" class="nav-link">Liste des utilisateur</a></p>
+        </div>
+    </article>
+</aside>
