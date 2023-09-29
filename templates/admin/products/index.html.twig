@@ -9,7 +9,7 @@
             {% include '_partials/_amin_navbar.html.twig' %}
             <main class="col-9 border border-white bg-light p-2">
                 <h1 class="text-center">La liste des produits</h1>
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -31,7 +31,7 @@
                             <td>{{ product.stock }}</td>
                             <td>{{ product.categories.name }}</td>
                             <td>
-                                <a href="{{ path('app_admin_products_edit', {id: product.id}) }}" class="btn btn-outline-warning">Modifier</a>
+                                <a href="{{ path('app_admin_products_edit', {id: product.id}) }}" class="btn"><img src="{{ asset('assets/img/icons/modif.png') }}" alt="icône" style="width: 25px"></a>
                             </td>
                         </tr>
                     {% endfor %}

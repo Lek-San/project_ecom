@@ -20,7 +20,7 @@
                     <div class="carousel-inner">
                         {% for image in product.images %}
                             <div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
-                                <img src="{{ asset('assets/img/products/mini/300x300-') ~ image.name }}" class="d-block w-100" alt="Image {{ product.name }}">
+                                <img src="{{ asset('assets/img/products/mini/300x300-') ~ image.name }}" class="d-block w-100"alt="Image {{ product.name }}">
                             </div>
                         {% endfor %}
                     </div>
@@ -41,7 +41,7 @@
                 <p>Catégorie : {{ product.categories.name }}</p>
                 <p>Prix : {{ product.price / 100 }}€</p>
                 {% if product.stock > 0  %}
-                    <a href="#" class="btn btn-outline-info">Ajouter au panier</a>
+                    <a href="{{ path('app_cart_add', {id: product.id}) }}" class="btn btn-outline-info">Ajouter au panier</a>
                 {% else %}
                     <p class="text-danger"><strong>Temporairement en rupture de stock</strong></p>
                 {% endif %}
