@@ -34,7 +34,7 @@ class UsersFixtures extends Fixture
 
         $faker = Faker\Factory::create('fr_FR');
 
-        for($i = 1; $i <= 10; $i++){
+        for($i = 1; $i < 10; $i++){
             $user = new User();
             $user->setEmail($faker->email);
             $user->setLastname($faker->lastName);

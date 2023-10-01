@@ -12,8 +12,9 @@
             </div>
 
             <div class="col-12">
-                <table class="table table-hover text-center">
-                    <thead>
+                {% if data %}
+                    <table class="table table-hover text-center">
+                        <thead>
                         <tr>
                             <th scope="col">Produit</th>
                             <th scope="col">Prix</th>
@@ -21,9 +22,9 @@
                             <th scope="col">Total</th>
                             <th scope="col">Action</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                    {% for element in data %}
+                        </thead>
+                        <tbody>
+                        {% for element in data %}
                         <tr>
                             <td>{{ element.product.name }}</td>
                             <td>{{ element.product.price / 100 }}€</td>
@@ -35,25 +36,27 @@
                                 <a href="{{ path('app_cart_delete', {id: element.product.id}) }}" class="btn"><img src="{{ asset('assets/img/icons/trash-can.png') }}" alt="icône" style="width:15px; height: 19px"></a>
                             </td>
                         </tr>
-                    </tbody>
-                    <tfoot>
+                        </tbody>
+                        {% endfor %}
+                        <tfoot>
                         <tr>
                             <td colspan="5" class="bg-light"></td>
                         </tr>
                         <tr>
                             <td colspan="3">Total</td>
                             <td>{{ total / 100}}€</td>
-                            <td><a href="{{ path('app_cart_emptyCart') }}" class="btn"><img src="{{ asset('assets/img/icons/trash-can.png') }}" alt="icône" style="width:15px; height: 19px"></a></td>
+                            <td><a href="{{ path('app_order_add') }}" class="btn btn-outline-success">Valider le panier</a></td>
                         </tr>
-                    </tfoot>
-                    {% else %}
-                        <tbody>
-                            <tr>
-                                <td colspan="5">Votre panier est vide</td>
-                            </tr>
-                        </tbody>
-                    {% endfor %}
-                </table>
+                        </tfoot>
+                    </table>
+                {% else %}
+                    <div  class="text-center mt-5">
+                        <h3>Votre panier est vide</h3>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('assets/img/icons/empty-cart.png') }}" alt="Panier vide">
+                    </div>
+                {% endif %}
             </div>
 
 
