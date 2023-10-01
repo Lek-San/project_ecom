@@ -23,7 +23,7 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: "Le nom du produit de peut pas être vide.")]
+    #[Assert\NotBlank(message: "Le nom du produit de peut pas être vide")]
     #[Assert\Length(
         min: 5,
         max: 100,
@@ -33,7 +33,7 @@ class Product
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: "La référence du produit de peut pas être vide.")]
+    #[Assert\NotBlank(message: "La référence du produit de peut pas être vide")]
     #[Assert\Length(
         min: 5,
         max: 100,
